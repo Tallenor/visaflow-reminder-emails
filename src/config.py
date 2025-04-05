@@ -1,13 +1,16 @@
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 
 # Load environment variables
 load_dotenv()
 
 ENV_VARS = {
+    "PROD": None,
     "XATA_BRANCH": None,
     "XATA_API_KEY": None,
     "XATA_DATABASE_URL": None,
+    "BREVO_EMAIL_API_KEY": None
 }
 
 def validate_env_vars():
@@ -33,3 +36,9 @@ validate_env_vars()
 
 # Get environment variables
 ENV_CONFIG = get_env_vars()
+
+BASE_DIR = Path(__file__).parent.parent
+
+
+# Set PROD environment variable
+PROD = True if ENV_CONFIG["PROD"] == "True"  else False
