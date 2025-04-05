@@ -16,7 +16,7 @@ def get_all_reminders() -> list | None:
 
     # Construct payload
     payload = {
-        "columns": ["data", "path.user.email"],
+        "columns": ["data", "path.user.email", "path.user.firstName"],
         "sort": {"data": "asc"},
         "filter": {"$exists": "data"},
     }
@@ -33,6 +33,7 @@ def get_all_reminders() -> list | None:
         for record in records:
             obj = {
                 "email": safe_get(record, "path.user.email"),
+                "firstName": safe_get(record, "path.user.firstName"),
                 "data": safe_get(record, "data"),
             }
 
@@ -47,4 +48,4 @@ def get_all_reminders() -> list | None:
     return result
 
 
-# print(get_all_reminders())
+# print(get_all_reminders()) # TODO: remove this
