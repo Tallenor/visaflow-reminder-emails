@@ -12,5 +12,9 @@ wheels/
 # Env
 .env
 
+# VSCode
+.vscode/
+!.vscode/tasks.json
+
 # logs
 logs/
