@@ -1,6 +1,16 @@
-from src import database
+from src.scheduler import run_scheduler
+from src.utils import setup_logger
+
+logger = setup_logger("main")
+
+
 def main():
-    print("Hello from email-reminder!")
+    try:
+        run_scheduler()
+    except KeyboardInterrupt:
+        print("\nGoodbye.")
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":

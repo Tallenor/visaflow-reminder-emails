@@ -38,7 +38,7 @@ def send_visa_reminder_email(recipient: dict, for_month_remaining: str) -> bool:
         # Send email
         response = api_instance.send_transac_email(email_instance)
         if response:
-            msg = f"Visa Reminder email sent to {name} at `{email}` for {"months" if for_month_remaining > 1 else "month"} remaining =>  `{for_month_remaining}`"
+            msg = f"Visa Reminder email sent to {name} at `{email}` for {"months" if int(for_month_remaining) > 1 else "month"} remaining =>  `{for_month_remaining}`"
             logger.info(msg)
             return True
         return False
@@ -71,7 +71,7 @@ def send_rp_reminder_email(recipient: dict, for_month_remaining: str) -> bool:
         # Send email
         response = api_instance.send_transac_email(email_instance)
         if response:
-            msg = f"RP Reminder email sent to {name} at `{email}` for {"months" if for_month_remaining > 1 else "month"} remaining => `{for_month_remaining}`"
+            msg = f"RP Reminder email sent to {name} at `{email}` for {"months" if int(for_month_remaining) > 1 else "month"} remaining => `{for_month_remaining}`"
             logger.info(msg)
             return True
         return False

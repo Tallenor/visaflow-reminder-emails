@@ -1,3 +1,4 @@
+import json
 from xata.client import XataClient
 from src import XATA_API_KEY, DB_URL
 from src.utils import safe_get
@@ -34,7 +35,7 @@ def get_all_reminders() -> list | None:
             obj = {
                 "email": safe_get(record, "path.user.email"),
                 "firstName": safe_get(record, "path.user.firstName"),
-                "data": safe_get(record, "data"),
+                "data": json.loads(safe_get(record, "data")),
             }
 
             filtered_records.append(obj)
@@ -46,6 +47,3 @@ def get_all_reminders() -> list | None:
         if "dateOfAppointment" in r["data"]:
             result["visa_reminders"].append(r)
     return result
-
-
-# print(get_all_reminders()) # TODO: remove this

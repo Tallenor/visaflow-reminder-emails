@@ -7,5 +7,6 @@ requires-python = ">=3.13"
 dependencies = [
     "brevo-python>=1.1.2",
     "python-dotenv>=1.1.0",
+    "scheduler>=0.8.8",
     "xata>=1.3.5",
 ]
