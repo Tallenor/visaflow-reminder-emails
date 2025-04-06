@@ -83,11 +83,17 @@ The application maintains detailed logs including:
 [Unit]
 Description=Visaflow Email reminders for Visa and Residence Permit
 After=network.target
+After=nss-user-lookup.target
+
 [Service]
-User=your_user  # Replace with your username
-WorkingDirectory=/path/to/your/script  # Replace with the directory containing main.py
-ExecStart=/path/to/your/script/.venv/bin/python3 /path/to/your/script/main.py  # Adjust accordingly
+User=your_user
+Group=your_user
+WorkingDirectory=/path/to/your/script
+Environment=PYTHONPATH=/path/to/your/script
+EnvironmentFile=/path/to/your/script/.env
+ExecStart=/path/to/your/script/.venv/bin/python3 /path/to/your/script/main.py
 Restart=on-failure
+
 [Install]
 WantedBy=multi-user.target
 ```
